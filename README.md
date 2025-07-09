@@ -12,3 +12,6 @@ To install SRGAN please run the following commands:
 conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=<CUDA_VERSION>
 pip install git+https://github.com/nworkv/SRGAN.git
 ```
+## Architecture
+![Image from article](architecture.png)
+
