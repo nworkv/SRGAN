@@ -1,7 +1,9 @@
 # SRGAN
 A project dedicated to the study of the architecture of a SRGAN. 
 A detailed description of the model's intricacies can be found in the article [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial
-Network](https://arxiv.org/pdf/1609.04802#page=10&zoom=100,66,644)
+Network](https://arxiv.org/pdf/1609.04802#page=10&zoom=100,66,644) <br>
+Optimization: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VQPwycLFqisijA5ynduMg3s9-EghLvTk?usp=sharing)
+
 ## Setup 
 It is required to have:
 - Anaconda
