@@ -3,7 +3,7 @@ A project dedicated to the study of the architecture of a SRGAN.
 A detailed description of the model's intricacies can be found in the article [Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial
 Network](https://arxiv.org/pdf/1609.04802#page=10&zoom=100,66,644)
 ## Setup 
-For all the methods described in the paper, is it required to have:
+It is required to have:
 - Anaconda
 
 Specific requirements for each method are described in its section. 
@@ -37,6 +37,15 @@ class GeneratorLoss(nn.Module):
     loss2 = self.adv_loss(pred, target)
     loss3 = self.l1_loss(pred_image, target_image)
     return 0.006 * loss1 + 0.001 * loss2 + 0.02 * loss3
+```
+<br> Discriminator loss does not differ <br>
+```
+class DiscriminatorLoss(nn.Module):
+  def __init__(self):
+    super(DiscriminatorLoss, self).__init__()
+    self.loss = nn.BCELoss()
+  def forward(self, pred, target):
+    return 10 * self.loss(pred, target)
 ```
 Тhe training took place in two stages.
 - Training generator with only MSE loss or L1 loss.
