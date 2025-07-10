@@ -13,7 +13,7 @@ conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=<CUDA_VERSI
 pip install git+https://github.com/nworkv/SRGAN.git
 ```
 ## Architecture
-![](architecture.png)
+<br> ![](architecture.png) <br>
 The architecture was taken from the article. The difference from the article is a simplified generator loss function(vgg19->vgg16).
 ```
 class GeneratorLoss(nn.Module):
