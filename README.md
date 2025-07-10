@@ -13,5 +13,32 @@ conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=<CUDA_VERSI
 pip install git+https://github.com/nworkv/SRGAN.git
 ```
 ## Architecture
-![Image from article](architecture.png)
+![](architecture.png)
+The architecture was taken from the article. The difference from the article is a simplified generator loss function(vgg19->vgg16).
+```
+class GeneratorLoss(nn.Module):
+  def __init__(self):
+    super(GeneratorLoss, self).__init__()
+    vgg = vgg16(weights='IMAGENET1K_V1')
+    loss_network = nn.Sequential(*list(vgg.features)[:29]).eval()
+    for param in loss_network.parameters():
+        param.requires_grad = False
+
+    #Perceptual Loss
+    self.loss_network = loss_network
+    self.per_loss = nn.MSELoss()
+    #Adversarial loss
+    self.adv_loss = nn.BCELoss()
+    #L1
+    self.l1_loss = nn.L1Loss()
+
+  def forward(self, pred_image, target_image, pred, target):
+    loss1 = self.per_loss(self.loss_network(pred_image), self.loss_network(target_image))
+    loss2 = self.adv_loss(pred, target)
+    loss3 = self.l1_loss(pred_image, target_image)
+    return 0.006 * loss1 + 0.001 * loss2 + 0.02 * loss3
+```
+Тhe training took place in two stages.
+- Training generator with only MSE loss or L1 loss.
+- Training generator with GeneratorLoss(presented above).
 
