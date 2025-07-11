@@ -15,7 +15,7 @@ Notebook : [![Open In Colab](https://colab.research.google.com/assets/colab-badg
 *   **`generator.py`**: Loads a Genertor class.
 *   **`training.py`**: Imports training functhion that starts the training process with nessasary 
 *   **`test.py`**: Demonstrates how to use the trained SRGAN to improve quality of images.
-*   
+
 ## Setup
 1.  **Clone the repository:**
     ```bash
@@ -25,7 +25,7 @@ Notebook : [![Open In Colab](https://colab.research.google.com/assets/colab-badg
     ```bash
     pip install torch torchvision Pillow tqdm # Add other dependencies if needed
 
-## Architecture
+## Architecture and Loss of models
 <br> ![](architecture.png) <br>
 The architecture was taken from the article. The difference from the article is a simplified generator loss function(vgg19->vgg16).
 ```
