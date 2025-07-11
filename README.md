@@ -4,16 +4,27 @@ A detailed description of the model's intricacies can be found in the article [P
 Network](https://arxiv.org/pdf/1609.04802#page=10&zoom=100,66,644) <br>
 Notebook : [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VQPwycLFqisijA5ynduMg3s9-EghLvTk?usp=sharing)
 
-## Setup 
-It is required to have:
-- Anaconda
+## Project goal
+*   Study of the above article.
+*   Writing the architecture of the model and preparing for training.
+*   Train Super-Resolution GAN on [div2k](https://www.kaggle.com/datasets/sharansmenon/div2k) and [flickr2k](https://www.kaggle.com/datasets/hliang001/flickr2k) datasets.
+*   Analyze the accuracy of the improved images.
+## Components
+*   **`dsdl.py`**: Loads an ImageDataset and ImageDataloader. It is nessasary in order to properly prepare the training data.
+*   **`discriminator.py`**: Loads a Discriminator class.
+*   **`generator.py`**: Loads a Genertor class.
+*   **`training.py`**: Imports training functhion that starts the training process with nessasary 
+*   **`test.py`**: Demonstrates how to use the trained SRGAN to improve quality of images.
+*   
+## Setup
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    ```
+2.  **Install dependencies:**
+    ```bash
+    pip install torch torchvision Pillow tqdm # Add other dependencies if needed
 
-Specific requirements for each method are described in its section. 
-To install SRGAN please run the following commands:
-  ```shell script
-conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=<CUDA_VERSION>
-pip install git+https://github.com/nworkv/SRGAN.git
-```
 ## Architecture
 <br> ![](architecture.png) <br>
 The architecture was taken from the article. The difference from the article is a simplified generator loss function(vgg19->vgg16).
